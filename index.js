@@ -12,6 +12,9 @@ app.use(express.json());
 
 // carDoctorUser
 // C14KGizmoXxbUBcl
+// DB_USER=carDoctorUser
+// DB_PASS=C14KGizmoXxbUBcl
+// ACCESS_TOKEN_SECRETE=2b48dd2e4f00495481857787cb7dd589610ef482ebb1a36c9a3519862bf8f070c996a3f5a099d2d729513812418a3b4d1a62add1f0a540664b8930e4faffb55c
 console.log('User name and password is =', process.env.DB_USER, process.env.DB_PASS)
 
 
@@ -38,7 +41,7 @@ async function run() {
     app.post('/jwt', async (req, res) => {
       const user = req.body;
       console.log(user);
-      const token = jwt.sign(user, 'secrete', {expiresIn: '1h'});
+      const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRETE, {expiresIn: '1h'});
       res.send(token)
     })
 
