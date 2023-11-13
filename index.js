@@ -1,14 +1,19 @@
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
 
 // middleware
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173'],
+  credentials: true,
+}));
 app.use(express.json());
+app.use(cookieParser());
 
 // carDoctorUser
 // C14KGizmoXxbUBcl
@@ -68,7 +73,8 @@ async function run() {
 
     // bookings
     app.get('/bookings', async (req, res) => {
-      console.log(req.query.service);
+      console.log(req.query.email);
+      console.log('tok tok token', req.cookies.token)
       let query = {};
       if (req.query?.email) {
         query = { email: req.query.email };
