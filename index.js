@@ -15,8 +15,9 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-// carDoctorUser
-// C14KGizmoXxbUBcl
+// DB_USER=carDoctorUser
+// DB_PASS=C14KGizmoXxbUBcl
+// ACCESS_TOKEN_SECRET=efdafe1986309d8406fcf7b324053193513157e9004299a03892e02fa5025480654fc641744f2dd4f3aec31010fd8651cdd60ee87ef0dc66b0b925a5dd26c419
 
 console.log('User name and password is =', process.env.DB_USER, process.env.DB_PASS)
 
